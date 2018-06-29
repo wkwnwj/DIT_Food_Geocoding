@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
     
 
@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpAnimals()
+        setUpsearchBar()
     }
     
     private func setUpAnimals(){
@@ -32,6 +33,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         animalArray.append(Animal(name: "James", category: .cat, image: "6"))
 
 
+    }
+    
+    private func setUpsearchBar(){
+        searchBar.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,9 +55,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 
+    // Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
+        
+    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
