@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var animalArray = [Animal]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    private func setUpAnimals(){
+        animalArray.append(Animal(name: "Amber", category: .cat, image: "1"))
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +33,13 @@ class ViewController: UIViewController {
 
 class Animal{
     let name: String
+    let image: String
     let category: AnimaType
     
-    init(name: String, category: AnimaType){
+    init(name: String, category: AnimaType, image: String){
         self.name = name
         self.category = category
+        self.image = image
     }
 }
 
