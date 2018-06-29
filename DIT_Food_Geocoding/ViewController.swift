@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     private func setUpAnimals(){
         //animalArray에 이름, 종류, 이미지 추가
-        animalArray.append(Animal(name: "Data", category: .Dog, image: "1"))
+        animalArray.append(Animal(name: "늘해랑", category: .Dog, image: "1"))
         animalArray.append(Animal(name: "번개반점", category: .Cat, image: "2"))
         animalArray.append(Animal(name: "아딸", category: .Cat, image: "3"))
 
