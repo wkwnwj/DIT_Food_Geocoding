@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+
+    
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -17,10 +19,38 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpAnimals()
     }
     
     private func setUpAnimals(){
         animalArray.append(Animal(name: "Amber", category: .cat, image: "1"))
+        animalArray.append(Animal(name: "James", category: .cat, image: "2"))
+        animalArray.append(Animal(name: "Peter", category: .cat, image: "3"))
+
+        animalArray.append(Animal(name: "Haywood", category: .cat, image: "4"))
+        animalArray.append(Animal(name: "Shell", category: .cat, image: "5"))
+        animalArray.append(Animal(name: "James", category: .cat, image: "6"))
+
+
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return animalArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableCell else{
+            return UITableViewCell()
+        }
+        cell.nameLbl.text = animalArray[indexPath.row].name
+        cell.categoryLbl.text = animalArray[indexPath.row].category.rawValue
+        cell.imgView.image = UIImage(named:animalArray[indexPath.row].image)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 
     override func didReceiveMemoryWarning() {
