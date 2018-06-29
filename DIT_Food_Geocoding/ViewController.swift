@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var searchBar: UISearchBar!
     
     var animalArray = [Animal]()
-    
+    var currentAnimalArray = [Animal]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpAnimals()
@@ -24,15 +24,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     private func setUpAnimals(){
-        animalArray.append(Animal(name: "Amber", category: .cat, image: "1"))
-        animalArray.append(Animal(name: "James", category: .cat, image: "2"))
-        animalArray.append(Animal(name: "Peter", category: .cat, image: "3"))
+        animalArray.append(Animal(name: "늘해랑", category: .a, image: "1"))
+        animalArray.append(Animal(name: "번개반점", category: .b, image: "2"))
+        animalArray.append(Animal(name: "아딸", category: .c, image: "3"))
 
-        animalArray.append(Animal(name: "Haywood", category: .cat, image: "4"))
-        animalArray.append(Animal(name: "Shell", category: .cat, image: "5"))
-        animalArray.append(Animal(name: "James", category: .cat, image: "6"))
+        animalArray.append(Animal(name: "홍콩반점", category: .d, image: "4"))
+        animalArray.append(Animal(name: "토마토도시락", category: .e, image: "5"))
+        animalArray.append(Animal(name: "왕짜장", category: .f, image: "6"))
 
-
+        currentAnimalArray = animalArray
     }
     
     private func setUpsearchBar(){
@@ -40,15 +40,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animalArray.count
+        return currentAnimalArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableCell else{
             return UITableViewCell()
         }
-        cell.nameLbl.text = animalArray[indexPath.row].name
-        cell.categoryLbl.text = animalArray[indexPath.row].category.rawValue
+        cell.nameLbl.text = currentAnimalArray[indexPath.row].name
+        cell.categoryLbl.text = currentAnimalArray[indexPath.row].category.rawValue
         cell.imgView.image = UIImage(named:animalArray[indexPath.row].image)
         
         return cell
@@ -60,7 +60,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        
+        guard !searchText.isEmpty else {
+            currentAnimalArray = animalArray
+            table.reloadData()
+            return }
+        currentAnimalArray = animalArray.filter({ animal -> Bool in
+            animal.name.contains(searchText)
+        })
+        table.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
@@ -91,6 +98,11 @@ class Animal{
 }
 
 enum AnimaType: String{
-    case cat = "Cat"
-    case dog = "Dog"
+    case a = "국밥"
+    case b = "짬짜면"
+    case c = "떡볶이"
+    case d = "짬뽕"
+    case e = "도시락"
+    case f = "짜장면"
+    
 }
