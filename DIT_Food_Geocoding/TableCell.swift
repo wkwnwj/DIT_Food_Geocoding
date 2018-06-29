@@ -13,9 +13,12 @@ class TableCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var categoryLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imgView.layer.cornerRadius = imgView.frame.width / 5.0
+        imgView.clipsToBounds = true
+        //radios 둥글기
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     private func setUpAnimals(){
+        //animalArray에 이름, 종류, 이미지 추가
         animalArray.append(Animal(name: "Data", category: .Dog, image: "1"))
         animalArray.append(Animal(name: "번개반점", category: .Cat, image: "2"))
         animalArray.append(Animal(name: "아딸", category: .Cat, image: "3"))
@@ -88,6 +89,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             break
         }
         table.reloadData()
+        //0, 1일 때는 AnimaType으로 한식, 분식을 구분
     }
 
     
@@ -115,12 +117,7 @@ class Animal{
 }
 
 enum AnimaType: String{
-//    case a = "국밥"
-//    case b = "짬짜면"
-//    case c = "떡볶이"
-//    case d = "짬뽕"
-//    case e = "도시락"
-//    case f = "짜장면"
+
     case Cat = "분식"
     case Dog = "한식"
     
