@@ -24,13 +24,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     private func setUpAnimals(){
-        animalArray.append(Animal(name: "늘해랑", category: .a, image: "1"))
-        animalArray.append(Animal(name: "번개반점", category: .b, image: "2"))
-        animalArray.append(Animal(name: "아딸", category: .c, image: "3"))
+        animalArray.append(Animal(name: "늘해랑", category: .Dog, image: "1"))
+        animalArray.append(Animal(name: "번개반점", category: .Cat, image: "2"))
+        animalArray.append(Animal(name: "아딸", category: .Cat, image: "3"))
 
-        animalArray.append(Animal(name: "홍콩반점", category: .d, image: "4"))
-        animalArray.append(Animal(name: "토마토도시락", category: .e, image: "5"))
-        animalArray.append(Animal(name: "왕짜장", category: .f, image: "6"))
+        animalArray.append(Animal(name: "홍콩반점", category: .Cat, image: "4"))
+        animalArray.append(Animal(name: "토마토도시락", category: .Dog, image: "5"))
+        animalArray.append(Animal(name: "왕짜장", category: .Cat, image: "6"))
+        
+        
+        animalArray.append(Animal(name: "8첩", category: .Dog, image: "7"))
+        animalArray.append(Animal(name: "불고기", category: .Dog, image: "8"))
+        animalArray.append(Animal(name: "비빔밥", category: .Dog, image: "9"))
 
         currentAnimalArray = animalArray
     }
@@ -63,16 +68,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard !searchText.isEmpty else {
             currentAnimalArray = animalArray
             table.reloadData()
-            return }
+            return
+        }
         currentAnimalArray = animalArray.filter({ animal -> Bool in
-            animal.name.contains(searchText)
+            animal.name.lowercased().contains(searchText.lowercased())
         })
         table.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
-        
+        switch selectedScope {
+        case 0:currentAnimalArray = animalArray
+        case 1:currentAnimalArray = animalArray.filter({ (animal) -> Bool in animal.category == AnimaType.Dog
+        })
+        case 2:currentAnimalArray = animalArray.filter({ (animal) -> Bool in animal.category == AnimaType.Cat
+        })
+        default:
+            break
+        }
+        table.reloadData()
     }
+
     
     
     
@@ -98,11 +114,13 @@ class Animal{
 }
 
 enum AnimaType: String{
-    case a = "국밥"
-    case b = "짬짜면"
-    case c = "떡볶이"
-    case d = "짬뽕"
-    case e = "도시락"
-    case f = "짜장면"
+//    case a = "국밥"
+//    case b = "짬짜면"
+//    case c = "떡볶이"
+//    case d = "짬뽕"
+//    case e = "도시락"
+//    case f = "짜장면"
+    case Cat = "분식"
+    case Dog = "한식"
     
 }
