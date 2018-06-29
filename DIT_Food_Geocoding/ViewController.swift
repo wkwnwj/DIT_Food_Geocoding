@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,3 +26,17 @@ class ViewController: UIViewController {
 
 }
 
+class Animal{
+    let name: String
+    let category: AnimaType
+    
+    init(name: String, category: AnimaType){
+        self.name = name
+        self.category = category
+    }
+}
+
+enum AnimaType: String{
+    case cat = "Cat"
+    case dog = "Dog"
+}

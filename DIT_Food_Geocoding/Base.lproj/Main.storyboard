@@ -32,7 +32,7 @@
                                     </scopeButtonTitles>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="134" id="Q7q-k2-9Ld">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="134" id="Q7q-k2-9Ld" customClass="TableCell" customModule="DIT_Food_Geocoding" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q7q-k2-9Ld" id="MYp-xV-YqE">
@@ -80,8 +80,17 @@
                                                 <constraint firstItem="4p7-bE-1PE" firstAttribute="leading" secondItem="MYp-xV-YqE" secondAttribute="leading" constant="10" id="ek2-Uo-2JC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryLbl" destination="Efy-7j-pXz" id="5Dv-LH-3gj"/>
+                                            <outlet property="imgView" destination="4p7-bE-1PE" id="Pth-Ma-c1G"/>
+                                            <outlet property="nameLbl" destination="WSn-Y0-U6g" id="Efc-NN-WcA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="sZ9-Z2-9PS"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="64N-hR-BS6"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,6 +102,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="czc-l4-Uge" id="zZi-oW-8dL"/>
+                        <outlet property="table" destination="TUF-nu-pyT" id="ng0-4f-k9r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
