@@ -22,9 +22,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         setUpAnimals()
         setUpsearchBar()
     }
-    
+
     private func setUpAnimals(){
-        animalArray.append(Animal(name: "늘해랑", category: .Dog, image: "1"))
+        animalArray.append(Animal(name: "Data", category: .Dog, image: "1"))
         animalArray.append(Animal(name: "번개반점", category: .Cat, image: "2"))
         animalArray.append(Animal(name: "아딸", category: .Cat, image: "3"))
 
@@ -66,6 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
+            
             currentAnimalArray = animalArray
             table.reloadData()
             return
